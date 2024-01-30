@@ -12,11 +12,6 @@ namespace Demo01.Controllers
             return "Je suis la page pour afficher contacts...";
         }
 
-        //public string AfficherContacts()
-        //{
-        //    return "Je suis la page pour afficher contacts...";
-        //}
-
         public string Details(int id)
         {
             return $"Je suis la page pour afficher le contact n°{id} en détail...";

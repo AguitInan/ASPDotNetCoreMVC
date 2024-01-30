@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Exercice02.Models.Contact>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts List</title>
+</head>
+<body>
+    <h1>Liste des Contacts</h1>
+    <ul>
+        @foreach (var contact in Model)
+        {
+            <li>@contact.Name - @contact.Email</li>
+        }
+    </ul>
+</body>
+</html>
