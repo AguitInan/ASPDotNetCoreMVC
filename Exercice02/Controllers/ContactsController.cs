@@ -6,14 +6,14 @@ namespace Demo01.Controllers
 {
     public class ContactsController : Controller
     {
-
-        public IActionResult Index()
-        {
-            var contacts = new List<Contact>
+        List<Contact>  contacts = new List<Contact>
             {
                 new Contact { Id = 1, Name = "Iori Yagami", Email = "yagami@mail.com" },
                 new Contact { Id = 2, Name = "Kyo Kusanagi", Email = "kusanagi@mail.com" }
-            };
+         };
+
+        public IActionResult Index()
+        {
 
             //ViewBag.Contacts = contacts;
             //ViewData["Contacts"] = contacts;
@@ -23,11 +23,6 @@ namespace Demo01.Controllers
 
         public IActionResult Details(int id)
         {
-            var contacts = new List<Contact>
-        {
-            new Contact { Id = 1, Name = "Iori Yagami", Email = "yagami@mail.com" },
-            new Contact { Id = 2, Name = "Kyo Kusanagi", Email = "kusanagi@mail.com" }
-        };
 
             var contact = contacts.FirstOrDefault(c => c.Id == id);
 
