@@ -22,12 +22,33 @@ namespace Demo01.Controllers
             return View(contacts);
         }
 
+        //public IActionResult Details(int id)
+        //{
+        //    var contact = new Contact { Id = id, Name = "Iori Yagami", Email = "yagami@mail.com" };
+
+        //    ViewBag.Contact = contact;
+
+        //    ViewData["Contact"] = contact;
+
+        //    return View(contact);
+        //}
+
         public IActionResult Details(int id)
         {
-            var contact = new Contact { Id = id, Name = "Iori Yagami", Email = "yagami@mail.com" };
+            var contacts = new List<Contact>
+        {
+            new Contact { Id = 1, Name = "Iori Yagami", Email = "yagami@mail.com" },
+                    new Contact { Id = 2, Name = "Kyo Kusanagi", Email = "kusanagi@mail.com" }
+        };
+
+            var contact = contacts.FirstOrDefault(c => c.Id == id);
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
 
             ViewBag.Contact = contact;
-
             ViewData["Contact"] = contact;
 
             return View(contact);

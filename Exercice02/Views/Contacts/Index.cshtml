@@ -7,10 +7,20 @@
 </head>
 <body>
     <h1>Liste des Contacts</h1>
-    <ul>
+    @* <ul>
         @foreach (var contact in Model)
         {
             <li>@contact.Name - @contact.Email</li>
+        }
+    </ul> *@
+
+    <ul>
+        @foreach (var contact in Model)
+        {
+            <li>
+                @contact.Name - @contact.Email
+                <a asp-action="Details" asp-route-id="@contact.Id">Détails</a>
+            </li>
         }
     </ul>
 </body>
