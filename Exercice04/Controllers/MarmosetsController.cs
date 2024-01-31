@@ -29,6 +29,19 @@ namespace Exercice04.Controllers
             return View(marmoset);
         }
 
+        public IActionResult CreateRandom()
+        {
+            var marmoset = new Marmoset
+            {
+                Name = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10),
+                Color = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10)
+            };
+
+            _fakeMarmosetDb.Add(marmoset);
+
+            return RedirectToAction("Index");
+        }
+
 
         public static string RandomString(string chars, int length)
         {

@@ -1,25 +1,8 @@
 ﻿@model Marmoset
 @{
     ViewData["Title"] = "Détails Marmoset";
-    // Contact contact = (Contact)ViewData["contact"];
-    // Contact contact = (Contact)ViewBag.Contact;
     Marmoset marmoset = Model;
 }
-
-@* Je suis la page pour afficher un contact en détail... *@
-
-@* <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Pierre Henri</h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">gugu@gmail.co</li>
-    <li class="list-group-item">0607080910</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Retour à la liste</a>
-  </div>
-</div> *@
 
 @if (marmoset != null)
 {
@@ -28,7 +11,6 @@
             <h5 class="card-title">@marmoset.Name</h5>
         </div>
         <ul class="list-group list-group-flush">
-            @* <li class="list-group-item">Email : @contact.Email</li> *@
             <li class="list-group-item">@Html.DisplayNameFor(m => m.Color) : @marmoset.Color</li>
         </ul>
         <div class="card-body">
