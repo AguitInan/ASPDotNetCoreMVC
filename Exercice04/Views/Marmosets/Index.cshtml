@@ -1,0 +1,68 @@
+﻿@model List<Marmoset>
+@*
+    l'annotation model remplace le type de la propriété Model (dynamic)
+    elle permet de "lier" une vue à un type en particulier => ici une liste de contact (List<Contact>)
+*@
+
+@{
+    ViewData["Title"] = "Liste des Marmosets";
+}
+
+@* Je suis la page pour lister les Marmosets... *@
+
+<table class="table">
+    <thead>
+        <tr>
+            @* <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Email</th>
+            <th scope="col">N° de téléphone</th>
+            <th scope="col">Actions</th> *@
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Marmoset m) => m.Name)</th>
+            <th scope="col">@Html.DisplayNameForInnerType((Marmoset m) => m.Color)</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Exemple d'une ligne (un contact)
+        <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>blabla@gmail.com</td>
+        <td>0607080910</td>
+        </tr>
+        *@
+        @* @foreach (Contact c in (List<Contact>) ViewData["contactList"]) *@
+        @* @foreach (Contact c in (List<Contact>) ViewBag.ContactList) *@
+        @foreach (Marmoset m in Model) @* Model est de type List<Contact> grace à la ligne 1 du fichier '@model List<Contact>' *@
+        {
+            <tr>
+                <th scope="row">@m.Id</th>
+                <td>@m.Name</td>
+                <td>@m.Color</td>
+                <td>
+                    @* <a asp-controller="Contacts" asp-action="Details" asp-route-id="@c.Id">Détails</a> *@
+                    <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@m.Id">Détails</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+@* 
+
+<a href="/Marmoset/CreateRandom">Créer un Marmoset Aléatoire</a>
+
+<a href="/Marmoset/Delete/@marmoset.Id">Supprimer</a>
+ *@
