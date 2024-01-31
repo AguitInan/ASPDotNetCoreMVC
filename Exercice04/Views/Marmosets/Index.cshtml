@@ -17,6 +17,7 @@
             <th scope="col">@Html.DisplayNameForInnerType((Marmoset m) => m.Name)</th>
             <th scope="col">@Html.DisplayNameForInnerType((Marmoset m) => m.Color)</th>
             <th scope="col">Actions</th>
+            <th scope="col">Supprimer</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
                 <td>@m.Color</td>
                 <td>
                     <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@m.Id">Détails</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" asp-action="Delete" asp-route-id="@m.Id">Supprimer</a>
                 </td>
             </tr>
         }

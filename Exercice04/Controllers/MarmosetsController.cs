@@ -42,6 +42,12 @@ namespace Exercice04.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete(int id)
+        {
+            _fakeMarmosetDb.Delete(id);
+            return RedirectToAction("Index");
+        }
+
 
         public static string RandomString(string chars, int length)
         {
