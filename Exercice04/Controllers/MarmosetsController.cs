@@ -34,7 +34,7 @@ namespace Exercice04.Controllers
             var marmoset = new Marmoset
             {
                 Name = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10),
-                Color = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10)
+                Color = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)
             };
 
             _fakeMarmosetDb.Add(marmoset);

@@ -17,6 +17,10 @@
             <a asp-action="Index" class="card-link">Retour à la liste</a>
         </div>
     </div>
+
+    <div>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@marmoset.Id">Supprimer</a>
+    </div>
 }
 else
 {
