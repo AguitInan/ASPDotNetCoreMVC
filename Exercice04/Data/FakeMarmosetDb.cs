@@ -1,4 +1,5 @@
 ﻿using Exercice04.Models;
+using static Exercice04.Models.Marmoset;
 
 namespace Exercice04.Data
 {
@@ -12,9 +13,9 @@ namespace Exercice04.Data
         {
             _marmosets = new List<Marmoset>() // équivalent du data seed (données par défaut)
             {
-                new Marmoset { Id = ++_lastId, Name = "Yagami", Color = "Vert"},
-                new Marmoset { Id = ++_lastId, Name = "Kusanagi", Color = "Rouge"},
-                new Marmoset { Id = ++_lastId, Name = "Mishima", Color = "Jaune"},
+                new Marmoset { Id = ++_lastId, Name = "Yagami", Color = (MarmosetColor)1},
+                new Marmoset { Id = ++_lastId, Name = "Kusanagi", Color = (MarmosetColor)2},
+                new Marmoset { Id = ++_lastId, Name = "Mishima", Color = (MarmosetColor)3},
             };
         }
 

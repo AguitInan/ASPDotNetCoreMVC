@@ -1,6 +1,8 @@
 ﻿using Exercice04.Data;
 using Exercice04.Models;
 using Microsoft.AspNetCore.Mvc;
+using static Exercice04.Models.Marmoset;
+using System;
 
 namespace Exercice04.Controllers
 {
@@ -34,7 +36,7 @@ namespace Exercice04.Controllers
             var marmoset = new Marmoset
             {
                 Name = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10),
-                Color = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)
+                Color = RandomColor()
             };
 
             _fakeMarmosetDb.Add(marmoset);
@@ -54,6 +56,15 @@ namespace Exercice04.Controllers
             Random random = new Random();
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static MarmosetColor RandomColor()
+        {
+            Random random = new Random();
+            var colors = Enum.GetValues(typeof(MarmosetColor));
+            MarmosetColor randomColor = (MarmosetColor)colors.GetValue(random.Next(colors.Length));
+
+            return randomColor;
         }
 
     }
