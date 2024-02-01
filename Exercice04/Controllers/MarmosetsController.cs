@@ -9,44 +9,51 @@ namespace Exercice04.Controllers
     public class MarmosetsController : Controller
     {
 
-        private FakeMarmosetDb _fakeMarmosetDb;
+        //private FakeMarmosetDb _fakeMarmosetDb;
 
-        public MarmosetsController(FakeMarmosetDb fakeMarmosetDb)
+        private readonly MarmosetDbContext _context;
+
+        public MarmosetsController(MarmosetDbContext context)
         {
-            _fakeMarmosetDb = fakeMarmosetDb;
+            _context = context;
         }
+
+        //public MarmosetsController(FakeMarmosetDb fakeMarmosetDb)
+        //{
+        //    _fakeMarmosetDb = fakeMarmosetDb;
+        //}
 
         // Affiche la liste de Marmosets
         public IActionResult Index()
         {
-
-            return View(_fakeMarmosetDb.GetAll());
+            return View(_context.Marmosets.ToList());
         }
 
         // /Marmosets/Details/5
         public IActionResult Details(int id)
         {
-            Marmoset? marmoset = _fakeMarmosetDb.GetById(id);
-
-            return View(marmoset);
+            return View(_context.Marmosets.FirstOrDefault(a => a.Id == id));
         }
 
         public IActionResult CreateRandom()
         {
             var marmoset = new Marmoset
             {
-                Name = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10),
+                Name = RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 6),
                 Color = RandomColor()
             };
 
-            _fakeMarmosetDb.Add(marmoset);
-
+            //_context.Add(marmoset);
+            _context.Marmosets.Add(marmoset);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            _fakeMarmosetDb.Delete(id);
+            var marmoset = _context.Marmosets.FirstOrDefault(a => a.Id == id);
+            _context.Marmosets.Remove(marmoset);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
