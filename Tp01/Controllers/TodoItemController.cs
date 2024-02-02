@@ -58,7 +58,10 @@ namespace Tp01.Controllers
             return View(todoItem);
         }
 
-
+        public IActionResult Create()
+        {
+            return View();
+        }
 
 
 
