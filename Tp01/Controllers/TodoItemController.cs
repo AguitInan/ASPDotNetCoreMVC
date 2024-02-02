@@ -77,7 +77,13 @@ namespace Tp01.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Route => TodoItemController/Delete/5
+        public IActionResult Delete(int id)
+        {
+            _todoItemRepository.Delete(id);
 
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
