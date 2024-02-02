@@ -85,7 +85,13 @@ namespace Tp01.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [NonAction] // ce n'est plus une action => un méthode classique sans route 
+        public static string RandomString(string chars, int length)
+        {
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
     }
 }
