@@ -63,7 +63,19 @@ namespace Tp01.Controllers
             return View();
         }
 
+        public IActionResult SubmitTodoItem(TodoItem todoItem)
+        {
+            // 2 cas de submit possible:
+            // -ajout d'un contact => Id == 0
+            // -modification d'un contact => Id != 0
 
+            if (todoItem.Id == 0)
+                _todoItemRepository.Add(todoItem);
+            else
+                _todoItemRepository.Update(todoItem);
+
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
