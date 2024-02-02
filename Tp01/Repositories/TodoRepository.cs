@@ -12,7 +12,13 @@ namespace Tp01.Repositories
             _dbContext = context;
         }
 
-
+        // CREATE
+        public bool Add(TodoItem todoItem)
+        {
+            var addedObj = _dbContext.TodoItems.Add(todoItem);
+            _dbContext.SaveChanges();
+            return addedObj.Entity.Id > 0;
+        }
 
 
 
