@@ -20,10 +20,12 @@ namespace Exercice04.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            int _lastId = 0; // pour faire un équivalent d'IDENTITY ou AUTO INCREMENT
+
             modelBuilder.Entity<Marmoset>().HasData(
-                new Marmoset { Id = 1, Name = "Marmoset1", Color = MarmosetColor.Bleu },
-                new Marmoset { Id = 2, Name = "Marmoset2", Color = MarmosetColor.Rouge }
-            );
+                    new Marmoset { Id = ++_lastId, Name = "Marmoset1", Color = MarmosetColor.Bleu },
+                    new Marmoset { Id = ++_lastId, Name = "Marmoset2", Color = MarmosetColor.Rouge }
+                );
             base.OnModelCreating(modelBuilder);
         }
     }
