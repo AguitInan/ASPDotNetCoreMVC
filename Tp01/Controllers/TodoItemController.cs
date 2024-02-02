@@ -47,7 +47,16 @@ namespace Tp01.Controllers
         //    return RedirectToAction(nameof(Index));
         //}
 
+        public IActionResult Form(int id)
+        {
+            if (id == 0) // pas d'id => ADD
+                return View();
 
+            // Sinon UPDATE
+            var todoItem = _todoItemRepository.GetById(id);
+
+            return View(todoItem);
+        }
 
 
 
