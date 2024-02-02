@@ -56,6 +56,14 @@ namespace Tp01.Repositories
             return _dbContext.SaveChanges() > 0;
         }
 
-
+        // DELETE
+        public bool Delete(int id)
+        {
+            var todoItem = GetById(id);
+            if (todoItem == null)
+                return false;
+            _dbContext.TodoItems.Remove(todoItem);
+            return _dbContext.SaveChanges() > 0;
+        }
     }
 }
