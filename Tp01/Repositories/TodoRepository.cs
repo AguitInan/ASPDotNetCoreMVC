@@ -29,7 +29,14 @@ namespace Tp01.Repositories
         {
             return _dbContext.TodoItems.FirstOrDefault(predicate);
         }
-
+        public List<TodoItem> GetAll()
+        {
+            return _dbContext.TodoItems.ToList();
+        }
+        public List<TodoItem> GetAll(Expression<Func<TodoItem, bool>> predicate)
+        {
+            return _dbContext.TodoItems.Where(predicate).ToList();
+        }
 
 
 
