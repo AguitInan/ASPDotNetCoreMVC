@@ -38,7 +38,23 @@ namespace Tp01.Repositories
             return _dbContext.TodoItems.Where(predicate).ToList();
         }
 
+        // UPDATE
+        public bool Update(TodoItem todoItem)
+        {
+            var todoItemFromDb = GetById(todoItem.Id);
 
+            if (todoItemFromDb == null)
+                return false;
+
+            if (todoItemFromDb.Title != todoItem.Title)
+                todoItemFromDb.Title = todoItem.Title;
+            if (todoItemFromDb.Description != todoItem.Description)
+                todoItemFromDb.Description = todoItem.Description;
+            if (todoItemFromDb.IsCompleted != todoItem.IsCompleted)
+                todoItemFromDb.IsCompleted = todoItem.IsCompleted;
+
+            return _dbContext.SaveChanges() > 0;
+        }
 
 
     }
