@@ -20,7 +20,15 @@ namespace Tp01.Repositories
             return addedObj.Entity.Id > 0;
         }
 
-
+        // READ
+        public TodoItem? GetById(int id)
+        {
+            return _dbContext.TodoItems.Find(id);
+        }
+        public TodoItem? Get(Expression<Func<TodoItem, bool>> predicate)
+        {
+            return _dbContext.TodoItems.FirstOrDefault(predicate);
+        }
 
 
 
