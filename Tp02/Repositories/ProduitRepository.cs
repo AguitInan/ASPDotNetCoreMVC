@@ -38,5 +38,27 @@ namespace Tp02.Repositories
             return _dbContext.Produits.Where(predicate).ToList();
         }
 
+        // UPDATE
+        public bool Update(Produit produit)
+        {
+            var produitFromDb = GetById(produit.Id);
+
+            if (produitFromDb == null)
+                return false;
+
+            if (produitFromDb.Nom != produit.Nom)
+                produitFromDb.Nom = produit.Nom;
+            if (produitFromDb.Description != produit.Description)
+                produitFromDb.Description = produit.Description;
+            if (produitFromDb.Prix != produit.Prix)
+                produitFromDb.Prix = produit.Prix;
+            if (produitFromDb.Quantite != produit.Quantite)
+                produitFromDb.Quantite = produit.Quantite;
+            if (produitFromDb.ImageUrl != produit.ImageUrl)
+                produitFromDb.ImageUrl = produit.ImageUrl;
+
+            return _dbContext.SaveChanges() > 0;
+        }
+
     }
 }
