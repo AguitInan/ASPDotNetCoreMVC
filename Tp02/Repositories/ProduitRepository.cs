@@ -60,5 +60,14 @@ namespace Tp02.Repositories
             return _dbContext.SaveChanges() > 0;
         }
 
+        // DELETE
+        public bool Delete(int id)
+        {
+            var produit = GetById(id);
+            if (produit == null)
+                return false;
+            _dbContext.Produits.Remove(produit);
+            return _dbContext.SaveChanges() > 0;
+        }
     }
 }
