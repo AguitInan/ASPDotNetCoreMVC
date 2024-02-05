@@ -20,5 +20,15 @@ namespace Tp02.Repositories
             return addedObj.Entity.Id > 0;
         }
 
+        // READ
+        public Produit? GetById(int id)
+        {
+            return _dbContext.Produits.Find(id);
+        }
+        public Produit? Get(Expression<Func<Produit, bool>> predicate)
+        {
+            return _dbContext.Produits.FirstOrDefault(predicate);
+        }
+
     }
 }
