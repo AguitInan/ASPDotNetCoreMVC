@@ -29,6 +29,14 @@ namespace Tp02.Repositories
         {
             return _dbContext.Produits.FirstOrDefault(predicate);
         }
+        public List<Produit> GetAll()
+        {
+            return _dbContext.Produits.ToList();
+        }
+        public List<Produit> GetAll(Expression<Func<Produit, bool>> predicate)
+        {
+            return _dbContext.Produits.Where(predicate).ToList();
+        }
 
     }
 }
