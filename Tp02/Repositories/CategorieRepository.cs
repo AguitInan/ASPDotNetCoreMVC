@@ -29,6 +29,14 @@ namespace Tp02.Repositories
         {
             return _dbContext.Categories.FirstOrDefault(predicate);
         }
+        public List<Categorie> GetAll()
+        {
+            return _dbContext.Categories.ToList();
+        }
+        public List<Categorie> GetAll(Expression<Func<Categorie, bool>> predicate)
+        {
+            return _dbContext.Categories.Where(predicate).ToList();
+        }
 
     }
 }
