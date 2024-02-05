@@ -12,5 +12,13 @@ namespace Tp02.Repositories
             _dbContext = context;
         }
 
+        // CREATE
+        public bool Add(Categorie categorie)
+        {
+            var addedObj = _dbContext.Categories.Add(categorie);
+            _dbContext.SaveChanges();
+            return addedObj.Entity.Id > 0;
+        }
+
     }
 }
