@@ -52,5 +52,14 @@ namespace Tp02.Repositories
             return _dbContext.SaveChanges() > 0;
         }
 
+        // DELETE
+        public bool Delete(int id)
+        {
+            var categorie = GetById(id);
+            if (categorie == null)
+                return false;
+            _dbContext.Categories.Remove(categorie);
+            return _dbContext.SaveChanges() > 0;
+        }
     }
 }
