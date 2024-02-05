@@ -38,5 +38,19 @@ namespace Tp02.Repositories
             return _dbContext.Categories.Where(predicate).ToList();
         }
 
+        // UPDATE
+        public bool Update(Categorie categorie)
+        {
+            var categorieFromDb = GetById(categorie.Id);
+
+            if (categorieFromDb == null)
+                return false;
+
+            if (categorieFromDb.Nom != categorie.Nom)
+                categorieFromDb.Nom = categorie.Nom;
+
+            return _dbContext.SaveChanges() > 0;
+        }
+
     }
 }
