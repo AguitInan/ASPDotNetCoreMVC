@@ -20,5 +20,15 @@ namespace Tp02.Repositories
             return addedObj.Entity.Id > 0;
         }
 
+        // READ
+        public Categorie? GetById(int id)
+        {
+            return _dbContext.Categories.Find(id);
+        }
+        public Categorie? Get(Expression<Func<Categorie, bool>> predicate)
+        {
+            return _dbContext.Categories.FirstOrDefault(predicate);
+        }
+
     }
 }
