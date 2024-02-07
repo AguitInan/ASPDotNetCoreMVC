@@ -36,5 +36,11 @@ namespace Tp02.Controllers
         //    _repository.Create(produit);
         //    return RedirectToAction("Index");
         //}
+
+        public IActionResult Delete(int id)
+        {
+            _repository.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
