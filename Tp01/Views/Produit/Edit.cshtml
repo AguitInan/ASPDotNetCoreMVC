@@ -1,0 +1,26 @@
+﻿@model YourNamespace.Models.Produit
+
+@{
+    ViewBag.Title = "Modifier Produit";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Produits", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    // ... Existing form fields for editing ...
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Enregistrer" class="btn btn-success" />
+            <a href="@Url.Action("Details", "Produits", new { id = Model.Id })" class="btn btn-info">Annuler</a>
+            <a href="@Url.Action("Delete", "Produits", new { id = Model.Id })" class="btn btn-danger">Supprimer</a>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "Produits")" class="btn btn-default">Retour à la liste</a>
+</div>
