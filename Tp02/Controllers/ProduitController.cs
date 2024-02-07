@@ -12,5 +12,18 @@ namespace Tp02.Controllers
         {
             _repository = repositoryProduit;
         }
+
+        public IActionResult Index()
+        {
+            return View(_repository.GetAll());
+        }
+
+        //public IActionResult Change(int id)
+        //{
+        //    var produit = _repository.GetById(id);
+        //    produit.Finished = !produit.Finished; // toggle
+        //    _repository.Update(produit);
+        //    return RedirectToAction("Index");
+        //}
     }
 }
