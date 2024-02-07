@@ -1,0 +1,37 @@
+﻿@model IEnumerable<YourNamespace.Models.Produit>
+
+@{
+    ViewBag.Title = "Liste des Produits";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Quantité en Stock</th>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prix)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantite)</td>
+                <td>@Html.DisplayFor(modelItem => item.Categorie.Nom)</td>
+                <td>
+                    <a href="@Url.Action("Details", "Produits", new { id = item.Id })" class="btn btn-info">Détails</a>
+                    <a href="@Url.Action("Edit", "Produits", new { id = item.Id })" class="btn btn-primary">Modifier</a>
+                    <a href="@Url.Action("Delete", "Produits", new { id = item.Id })" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
