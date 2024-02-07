@@ -1,0 +1,21 @@
+﻿@model YourNamespace.Models.Produit
+
+@{
+    ViewBag.Title = "Détails du Produit";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Produit</h4>
+    <hr />
+    <dl class="row">
+        // ... Existing detail fields ...
+    </dl>
+</div>
+
+<div>
+    <a href="@Url.Action("Edit", "Produits", new { id = Model.Id })" class="btn btn-primary">Modifier</a>
+    <a href="@Url.Action("Delete", "Produits", new { id = Model.Id })" class="btn btn-danger">Supprimer</a>
+    <a href="@Url.Action("Index", "Produits")" class="btn btn-default">Retour à la liste</a>
+</div>
