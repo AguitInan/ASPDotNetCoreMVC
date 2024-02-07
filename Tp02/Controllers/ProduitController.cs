@@ -25,5 +25,16 @@ namespace Tp02.Controllers
         //    _repository.Update(produit);
         //    return RedirectToAction("Index");
         //}
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        //public IActionResult Submit(Produit produit)
+        //{
+        //    _repository.Create(produit);
+        //    return RedirectToAction("Index");
+        //}
     }
 }
